@@ -13,6 +13,17 @@ public class VistaConsolaPrueba {
 
 		}
 
+		mazoJuego.MezclarMaso();
+		System.out.println("-----------------------------------------");
+
+		for ( CartasJuego aux : mazoJuego.arregloMazo){
+			System.out.println(aux.getPalo() +" "+ aux.getValorMostrar() +" " + aux.getValorReal());
+
+		}
+
+	
 	}
+
+
 
 }

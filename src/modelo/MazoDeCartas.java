@@ -1,12 +1,14 @@
 package modelo;
-
-
+import java.util.Collections;
+import java.util.Random;
 
 public class MazoDeCartas {
 //ATRIBUTOS 
     public CartasJuego[] arregloMazo;
     private String [] palos ={"DIAMANTE", "TREBOL", "PICA","CORAZON"};
     private String[] valoresFigura = {"AS","2","3","4","5","6","7","8","9","10","J","K","Q"};
+    private int cartaRepartir;
+    
 
 
 
@@ -24,9 +26,34 @@ public class MazoDeCartas {
                 arregloMazo[indiceDelMazo++] = new CartasJuego(indicePalos, indiceValorFigura, valorRealPorPalo ++);
             }
         }
+        cartaRepartir =0;
+    }
+
+//METODOS
+
+
+    public void MezclarMaso(){
+         Random numRamdom = new Random();
+
+         for(int auxiliarRecorridoMazo=0; auxiliarRecorridoMazo < arregloMazo.length; auxiliarRecorridoMazo++){
+             int numeroRandomReal = numRamdom.nextInt(arregloMazo.length);
+             CartasJuego cartaAuxiliar = arregloMazo[numeroRandomReal];
+             arregloMazo[numeroRandomReal]= arregloMazo[auxiliarRecorridoMazo];
+             arregloMazo[auxiliarRecorridoMazo] = cartaAuxiliar;
+         }
+    }
+    
+    public CartasJuego repartirCarta(){
+        CartasJuego cartaDar;
+        cartaDar = null;
+        if( cartaRepartir < arregloMazo.length){
+            cartaDar = arregloMazo[cartaRepartir];
+        }
+        cartaRepartir++;
+        return cartaDar;
+
+
     }
 
 
-
-    
 }
